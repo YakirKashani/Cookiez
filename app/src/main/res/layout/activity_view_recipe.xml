@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewRecipeActivity">
+
+    <RelativeLayout
+        android:id="@+id/RecipeView_RL_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp">
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/RecipeView_MTV_NameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name:"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            >
+
+        </com.google.android.material.textview.MaterialTextView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/RecipeView_MTV_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Recipe Name"
+            android:textStyle="italic"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/RecipeView_MTV_NameText"
+            >
+
+    </com.google.android.material.textview.MaterialTextView>
+</RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/RecipeView_RL_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/RecipeView_RL_name">
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/RecipeView_MTV_AuthorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="By:"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            >
+
+        </com.google.android.material.textview.MaterialTextView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/RecipeView_MTV_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Author Name"
+            android:textStyle="italic"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/RecipeView_MTV_AuthorText">
+
+        </com.google.android.material.textview.MaterialTextView>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/RecipeView_RL_Ingredients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/RecipeView_RL_author"
+        android:layout_marginTop="10dp"
+        >
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/RecipeView_MTV_IngredientsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ingredients:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+
+            >
+        </com.google.android.material.textview.MaterialTextView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/RecipeView_RV_ingredients"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/RecipeView_MTV_IngredientsText"
+
+            >
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/RecipeView_RL_steps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/RecipeView_RL_Ingredients"
+        android:layout_marginTop="10dp"
+        >
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/RecipeView_MTV_steps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Steps:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            >
+        </com.google.android.material.textview.MaterialTextView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/RecipeView_RV_steps"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/RecipeView_MTV_steps"
+
+            >
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    </RelativeLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/RecipeView_FAB_Back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/LightBlue200"
+        android:src="@drawable/baseline_arrow_back_24">
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/RecipeView_MTV_UploadTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Uploaded at"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:textSize="15sp"
+        android:textStyle="italic"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="20dp">
+
+    </com.google.android.material.textview.MaterialTextView>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/RecipeView_SIV_Like"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@+id/RecipeView_SIV_CookIt"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="80dp"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/empty_heart"
+        >
+    </com.google.android.material.imageview.ShapeableImageView>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/RecipeView_SIV_CookIt"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/baseline_restaurant_menu_24"
+        >
+
+    </com.google.android.material.imageview.ShapeableImageView>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/RecipeView_SIV_RecipePicture"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        >
+
+    </com.google.android.material.imageview.ShapeableImageView>
+
+
+
+    </RelativeLayout>

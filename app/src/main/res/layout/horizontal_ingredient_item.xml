@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBaseline_toTopOf="parent"
+        >
+        <RelativeLayout
+            android:id="@+id/HII_RL_MaiRelativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/HII_TIL_name"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/white"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/HII_TIET_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingredient Name" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/HII_TIL_amount"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/white"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/HII_TIL_name">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/HII_TIET_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="amount" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+            <MultiAutoCompleteTextView
+                android:id="@+id/HII_MACTV_units"
+                android:layout_width="wrap_content"
+                android:layout_height="63dp"
+                android:layout_toRightOf="@+id/HII_TIL_amount"
+                android:hint="Units"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:width="105dp">
+
+            </MultiAutoCompleteTextView>
+
+
+
+
+
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

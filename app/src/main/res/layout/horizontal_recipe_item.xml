@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/HRI_CV_Card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBaseline_toTopOf="parent"
+
+        >
+    <RelativeLayout
+        android:id="@+id/HII_RL_MaiRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/HRI_MTV_RecipeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:layout_centerInParent="true"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:paddingHorizontal="5dp">
+
+        </com.google.android.material.textview.MaterialTextView>
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/HRI_SIV_RecipePicture"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            app:shapeAppearanceOverlay="@style/RoundedImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:src="@drawable/cooking_pot"
+            >
+
+        </com.google.android.material.imageview.ShapeableImageView>
+
+        <!--com.google.android.material.textview.MaterialTextView
+            android:id="@+id/HRI_MTV_RecipeAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="By: "
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/HRI_MTV_RecipeName"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="5dp"
+            >
+
+        </com.google.android.material.textview.MaterialTextView-->
+    </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

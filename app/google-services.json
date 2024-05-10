@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "999362122304",
+    "firebase_url": "https://cookiez-44fd5-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "cookiez-44fd5",
+    "storage_bucket": "cookiez-44fd5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:999362122304:android:fda554eb492fdd752645a5",
+        "android_client_info": {
+          "package_name": "com.example.cookiez"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAodBgeKVljhdI2un5jGpxCPmxqRP-KXe0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

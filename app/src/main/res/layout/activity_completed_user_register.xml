@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CompletedUserRegisterActivity">
+
+    <Toolbar
+        android:id="@+id/Register_MT_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:titleTextColor="@color/black"
+        app:titleCentered="true">
+
+    </Toolbar>
+
+
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/Register_LPI_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Register_MT_toolbar">
+
+    </com.google.android.material.progressindicator.LinearProgressIndicator>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/Register_SIV_ProfileImage"
+        android:layout_width="200sp"
+        android:layout_height="200sp"
+        android:layout_below="@+id/Register_TF_UserNameInput"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/baseline_person_24"
+        >
+
+
+    </com.google.android.material.imageview.ShapeableImageView>
+
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/Register_MTV_Explain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
+        android:text="To complete the sign-up, please fill in user name"
+        android:textAlignment="center"
+        android:layout_below="@id/Register_MT_toolbar">
+
+    </com.google.android.material.textview.MaterialTextView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/Register_MTV_UserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        android:text="User Name:"
+        android:textAlignment="center"
+        android:layout_below="@id/Register_MTV_Explain"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="5dp">
+    </com.google.android.material.textview.MaterialTextView>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Register_TF_UserNameInput"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Register_MTV_UserName"
+        app:boxBackgroundColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Register_TIET_UserNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Your UserName" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/Register_MB_Register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="Register"
+        >
+
+    </com.google.android.material.button.MaterialButton>
+
+
+</RelativeLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CookingRecipeActivity">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/CookingRecipe_MTV_CookingStep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HELLO"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"
+        android:textAlignment="center"
+        >
+
+    </com.google.android.material.textview.MaterialTextView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/CookingRecipe_MTV_Timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="00:00:00"
+        android:textSize="30sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="160dp"
+        >
+
+    </com.google.android.material.textview.MaterialTextView>
+
+
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="90dp"
+        >
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/CookingRecipe_FAB_Stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/red_600"
+        android:layout_alignParentLeft="true"
+
+        >
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/CookingRecipe_FAB_Play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/green_600"
+            android:layout_alignParentRight="true"
+
+            >
+
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+</RelativeLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/CookingRecipe_MB_Next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="next"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp">
+
+    </com.google.android.material.button.MaterialButton>
+
+
+</RelativeLayout>

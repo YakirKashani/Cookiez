@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/NewRecipe_RL_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewRecipeActivity">
+
+    <RelativeLayout
+        android:id="@+id/NewRecipe_RL_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp">
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/NewRecipe_MTV_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name:"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            >
+
+        </com.google.android.material.textview.MaterialTextView>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/NewRecipe_TIL_name"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/NewRecipe_MTV_name"
+        app:boxBackgroundColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/NewRecipe_TIET_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Your Recipe Name" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/NewRecipe_RL_ingredients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/NewRecipe_RL_name"
+        android:layout_marginTop="10dp"
+        >
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/NewRecipe_MTV_ingredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ingredients:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+
+            >
+
+
+        </com.google.android.material.textview.MaterialTextView>
+
+        <ImageButton
+            android:id="@+id/NewRecipe_IB_addIngredient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/NewRecipe_RV_ingredients"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/baseline_add_24"
+            >
+
+        </ImageButton>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/NewRecipe_RV_ingredients"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/NewRecipe_MTV_ingredients"
+
+            >
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/NewRecipe_RL_steps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/NewRecipe_RL_ingredients"
+        android:layout_marginTop="10dp"
+        >
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/NewRecipe_MTV_steps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Steps:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+
+            >
+
+
+        </com.google.android.material.textview.MaterialTextView>
+
+        <ImageButton
+            android:id="@+id/NewRecipe_IB_addStep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/NewRecipe_RV_steps"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/baseline_add_24"
+            >
+
+        </ImageButton>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/NewRecipe_RV_steps"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/NewRecipe_MTV_steps"
+
+            >
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/NewRecipe_MB_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:backgroundTint="@color/green_600"
+        android:text="upload"
+
+
+        >
+
+    </com.google.android.material.button.MaterialButton>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/NewRecipe_MB_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft= "true"
+        android:backgroundTint="@color/red_600"
+        android:text="cancel">
+
+    </com.google.android.material.button.MaterialButton>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/Register_SIV_AddRecipeImage"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/baseline_add_photo_alternate_24"
+            >
+
+        </com.google.android.material.imageview.ShapeableImageView>
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+</RelativeLayout>

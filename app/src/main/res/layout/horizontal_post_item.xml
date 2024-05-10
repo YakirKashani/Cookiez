@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="280dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/HPI_CV_Posts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBaseline_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/HPI_MTV_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UserName shared a new recipe"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"
+            android:layout_centerHorizontal="true"
+            >
+
+        </com.google.android.material.textview.MaterialTextView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/HPI_MTV_RecipeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recipe name"
+            android:layout_below="@id/HPI_MTV_Name"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"
+            >
+
+        </com.google.android.material.textview.MaterialTextView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/HPI_MTV_Likes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="X Likes"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="18dp"
+            android:layout_alignParentBottom="true"
+            >
+
+        </com.google.android.material.textview.MaterialTextView>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/HPI_SIV_Like"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/empty_heart"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:layout_centerVertical="true"
+            >
+
+        </com.google.android.material.imageview.ShapeableImageView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/RecipeView_MTV_UploadTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Uploaded at"
+            android:textSize="15sp"
+            android:textStyle="italic"
+            android:layout_alignParentBottom="true"
+
+
+            android:layout_marginTop="9dp">
+
+        </com.google.android.material.textview.MaterialTextView>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/HPI_SIV_ProfilePicture"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            app:shapeAppearanceOverlay="@style/RoundedImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:src="@drawable/baseline_person_24"
+            >
+
+        </com.google.android.material.imageview.ShapeableImageView>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/HPI_SIV_RecipePicture"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_marginLeft="40dp"
+            android:layout_below="@id/HPI_MTV_RecipeName"
+            android:layout_marginTop="25dp"
+            app:shapeAppearanceOverlay="@style/RoundedImageView"
+            android:layout_centerHorizontal="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:src="@drawable/cooking_pot"
+            >
+
+        </com.google.android.material.imageview.ShapeableImageView>
+    </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
