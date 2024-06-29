@@ -122,10 +122,11 @@ public class UserProfileActivity extends AppCompatActivity {
         UserProfile_FAB_Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                switchMainActivity();
+              //  finish();
             }
         });
-        UsersRef.child(userID).addValueEventListener(new ValueEventListener() {
+        UsersRef.child(userID).addValueEventListener(new ValueEventListener() { // TODO - Change upload method
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserProfile_MTV_UserName.setText(snapshot.child("userName").getValue(String.class));
@@ -136,10 +137,11 @@ public class UserProfileActivity extends AppCompatActivity {
                 if(recipes.size() == 0) {
                     for (DataSnapshot recipeSnapshot : snapshot.child("Recipes").getChildren()) {
                         String name = recipeSnapshot.getKey();
-                        String dateUploaded = recipeSnapshot.child("Upload date").getValue(String.class);
-                        String timeUploaded = recipeSnapshot.child("Upload time").getValue(String.class);
+                        String dateUploaded = recipeSnapshot.child("date").getValue(String.class);
+                        String timeUploaded = recipeSnapshot.child("time").getValue(String.class);
+                        String RecipePicture = recipeSnapshot.child("Recipe Picture").getValue(String.class);
                         Recipe recipe = new Recipe();
-                        recipe.setAuthor(name).setName(name).setIngredients(null).setSteps(null).setDate(dateUploaded).setTime(timeUploaded);
+                        recipe.setAuthor(name).setName(name).setIngredients(null).setSteps(null).setDate(dateUploaded).setTime(timeUploaded).setRecipePicture(RecipePicture);
                         recipes.add(recipe);
                     }
                 }
@@ -177,5 +179,10 @@ public class UserProfileActivity extends AppCompatActivity {
 
     private void PutProfilePicture(String ProfilePicture){
         Glide.with(this).load(ProfilePicture).into(UserProfile_SIV_ProfilePicture);
+    }
+    public void switchMainActivity(){
+        Intent MainIntent = new Intent(this, MainActivity.class);
+        startActivity(MainIntent);
+
     }
 }

@@ -31,6 +31,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class HomeFragment extends Fragment {
 
@@ -77,7 +78,7 @@ public class HomeFragment extends Fragment {
     private void findViews(View view) {
         Home_RV_Posts = view.findViewById(R.id.Home_RV_Posts);
     }
-    private void initViews(View view) {
+    private void initViews(View view) { //TODO - Improve reading methods
         DatabaseReference CurrentUserRef = UsersRef.child(user.getUid()).child("Following"); // Users -> specific user
         CurrentUserRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -91,16 +92,16 @@ public class HomeFragment extends Fragment {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for (DataSnapshot recipeSanpshot : snapshot.getChildren()) {
                                 String name = recipeSanpshot.getKey();
-                                String author = recipeSanpshot.child("Author").getValue(String.class);
-                                String dateUploaded = recipeSanpshot.child("Upload date").getValue(String.class);
-                                String timeUploaded = recipeSanpshot.child("Upload time").getValue(String.class);
+                                String author = recipeSanpshot.child("author").getValue(String.class);
+                                String dateUploaded = recipeSanpshot.child("date").getValue(String.class);
+                                String timeUploaded = recipeSanpshot.child("time").getValue(String.class);
                                 String RecipePicture = recipeSanpshot.child("Recipe Picture").getValue(String.class);
                                 long likes = recipeSanpshot.child("Likes").getChildrenCount();
                                 ArrayList<String> UsersLiked = new ArrayList<>();
                                 for(DataSnapshot likesSnapshot : recipeSanpshot.child("Likes").getChildren())
                                     UsersLiked.add(likesSnapshot.getKey());
                                 Recipe recipe = new Recipe();
-                                recipe.setName(name).setAuthorUid(uid).setAuthor(author).setDate(dateUploaded).setTime(timeUploaded).setLikes(likes).setIngredients(null).setSteps(null).setUsersLiked(UsersLiked).setRecipePicture(AuthorPicture).setRecipePicture(RecipePicture);
+                                recipe.setName(name).setAuthorUid(uid).setAuthor(author).setDate(dateUploaded).setTime(timeUploaded).setLikes(likes).setIngredients(null).setSteps(null).setRecipePicture(AuthorPicture).setRecipePicture(RecipePicture).setUsersLiked(UsersLiked);
                                 posts.add(recipe);
                             }
                             usePosts(view, posts);
@@ -133,13 +134,13 @@ public class HomeFragment extends Fragment {
                 RecipeIntent.putExtra(ViewRecipeActivity.RecipeAuthorStatus, recipe.getAuthor());
                 RecipeIntent.putExtra(ViewRecipeActivity.UUIDstatus, recipe.getAuthorUid());
                 startActivity(RecipeIntent);
+                getActivity().finish();
             }
         });
 
         postAdapter.setPostCallback(new PostCallback() {
             @Override
             public void likeButtonClicked(Recipe recipe, int position) {
-
                 if(recipe.getUsersLiked().contains(user.getUid()))
                 {
          //           recipe.getUsersLiked().remove(user.getUid());
@@ -159,17 +160,14 @@ public class HomeFragment extends Fragment {
         for(int i=0;i<posts.size();i++){
             Recipe recipe = posts.get(i);
             for(int k=i+1;k<posts.size();k++){
-                if(recipe.getName() == posts.get(k).getName() &&
-                        recipe.getAuthorUid() == posts.get(k).getAuthorUid() &&
-                        recipe.getDate() == posts.get(k).getDate() &&
-                        recipe.getTime() == posts.get(k).getTime()) {
+                if(Objects.equals(recipe.getName(), posts.get(k).getName()) &&
+                        Objects.equals(recipe.getAuthorUid(), posts.get(k).getAuthorUid()) &&
+                        Objects.equals(recipe.getDate(), posts.get(k).getDate()) &&
+                        Objects.equals(recipe.getTime(), posts.get(k).getTime())) {
                     posts.remove(k);
                 }
-
             }
         }
-
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         Home_RV_Posts.setLayoutManager(linearLayoutManager);

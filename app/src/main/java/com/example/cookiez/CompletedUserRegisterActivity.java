@@ -105,7 +105,6 @@ public class CompletedUserRegisterActivity extends AppCompatActivity {
             NewUser.setUid(UID).setUserName(UserNameChosen);
             SpecificUserRef.setValue(NewUser);
             uploadImage(image);
-            // TODO get image url
             ChangeActivityMainActivity();
         });
 

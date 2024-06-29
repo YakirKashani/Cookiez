@@ -85,6 +85,7 @@ public class DashboardFragment extends Fragment {
                 Intent UserProfileIntent = new Intent(getContext(), UserProfileActivity.class);
                 UserProfileIntent.putExtra(UserProfileActivity.UserIdStatus,userRecipesCountsList.get(position).getUserId());
                 startActivity(UserProfileIntent);
+                getActivity().finish();
             }
         });
 
@@ -107,7 +108,7 @@ public class DashboardFragment extends Fragment {
                             if (search.length() == 0) {
                                 userRecipesCountsList.clear();
                             }
-                            else {
+                            else { //TODO - Improve reading method
                                 for (DataSnapshot userSnapshot : snapshot.getChildren()) {
                                     String name = userSnapshot.child("userName").getValue(String.class);
                                     String ProfilePicture = userSnapshot.child("Profile Picture").getValue(String.class);
@@ -129,8 +130,6 @@ public class DashboardFragment extends Fragment {
 
                         }
                     });
-
-
             }
 
             @Override

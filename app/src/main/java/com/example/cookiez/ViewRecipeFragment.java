@@ -51,11 +51,11 @@ public class ViewRecipeFragment extends Fragment {
         UsersRef = db.getReference("users");
         UsersRef.child(UUID).child("Recipes").child(RecipeName).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) { //TODO - change method
                 Recipe recipe = new Recipe();
                 //           ArrayList<Ingredient> ingredients = new ArrayList<>();
                 //          ArrayList<String> steps = new ArrayList<>();
-                for(DataSnapshot ingredientSnapshot : snapshot.child("Ingredients").getChildren()) {
+                for(DataSnapshot ingredientSnapshot : snapshot.child("ingredients").getChildren()) {
                     String name = ingredientSnapshot.child("name").getValue(String.class);
                     String amount = ingredientSnapshot.child("amount").getValue(String.class);
                     String units = ingredientSnapshot.child("units").getValue(String.class);
@@ -63,7 +63,7 @@ public class ViewRecipeFragment extends Fragment {
                     ingredient.setName(name).setAmount(amount).setUnit(units);
                     ingredients.add(ingredient);
                 }
-                for(DataSnapshot stepSnapshot : snapshot.child("Steps").getChildren()){
+                for(DataSnapshot stepSnapshot : snapshot.child("steps").getChildren()){
                     String step = stepSnapshot.getValue(String.class);
                     steps.add(step);
                 }

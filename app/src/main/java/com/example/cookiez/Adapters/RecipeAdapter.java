@@ -44,7 +44,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
         holder.HRI_MTV_RecipeName.setText(recipes.get(position).getName());
         Glide.with(context).load(recipes.get(position).getRecipePicture()).into(holder.HRI_SIV_RecipePicture);
-        //       holder.HRI_MTV_RecipeAuthor.setText("By: " + recipes.get(position).getAuthor());
+        holder.RecipeView_MTV_UploadTime.setText("Uploaded at " + recipes.get(position).getDate() + " " + recipes.get(position).getTime());
 
     }
 
@@ -63,14 +63,14 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     public class RecipeViewHolder extends RecyclerView.ViewHolder {
 
         private MaterialTextView HRI_MTV_RecipeName;
-        //      private MaterialTextView HRI_MTV_RecipeAuthor;
+        private MaterialTextView RecipeView_MTV_UploadTime;
         private ShapeableImageView HRI_SIV_RecipePicture;
         private CardView HRI_CV_Card;
 
         public RecipeViewHolder(@NonNull View itemView) {
             super(itemView);
             HRI_MTV_RecipeName = itemView.findViewById(R.id.HRI_MTV_RecipeName);
-            //       HRI_MTV_RecipeAuthor = itemView.findViewById(R.id.HRI_MTV_RecipeAuthor);
+            RecipeView_MTV_UploadTime = itemView.findViewById(R.id.RecipeView_MTV_UploadTime);
             HRI_SIV_RecipePicture = itemView.findViewById(R.id.HRI_SIV_RecipePicture);
             HRI_CV_Card = itemView.findViewById(R.id.HRI_CV_Card);
             HRI_CV_Card.setOnClickListener(v -> {

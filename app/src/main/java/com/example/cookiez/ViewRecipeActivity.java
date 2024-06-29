@@ -102,7 +102,8 @@ public class ViewRecipeActivity extends AppCompatActivity {
         RecipeView_FAB_Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                switchMainActivity();
+              //  finish();
             }
         });
         RecipeView_SIV_Like.setOnClickListener(v -> {
@@ -139,15 +140,15 @@ public class ViewRecipeActivity extends AppCompatActivity {
 
         UsersRef.child(UUID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) { // TODO - change method
                 Recipe recipe = new Recipe();
-                String date = snapshot.child("Recipes").child(RecipeName).child("Upload date").getValue(String.class);
-                String time = snapshot.child("Recipes").child(RecipeName).child("Upload time").getValue(String.class);
+                String date = snapshot.child("Recipes").child(RecipeName).child("date").getValue(String.class);
+                String time = snapshot.child("Recipes").child(RecipeName).child("time").getValue(String.class);
                 String RecipePicture = snapshot.child("Recipes").child(RecipeName).child("Recipe Picture").getValue(String.class);
 
      //           ArrayList<Ingredient> ingredients = new ArrayList<>();
       //          ArrayList<String> steps = new ArrayList<>();
-                for(DataSnapshot ingredientSnapshot : snapshot.child("Recipes").child(RecipeName).child("Ingredients").getChildren()) {
+                for(DataSnapshot ingredientSnapshot : snapshot.child("Recipes").child(RecipeName).child("ingredients").getChildren()) {
                     String name = ingredientSnapshot.child("name").getValue(String.class);
                     String amount = ingredientSnapshot.child("amount").getValue(String.class);
                     String units = ingredientSnapshot.child("units").getValue(String.class);
@@ -155,7 +156,7 @@ public class ViewRecipeActivity extends AppCompatActivity {
                     ingredient.setName(name).setAmount(amount).setUnit(units);
                     ingredients.add(ingredient);
                 }
-                for(DataSnapshot stepSnapshot : snapshot.child("Recipes").child(RecipeName).child("Steps").getChildren()){
+                for(DataSnapshot stepSnapshot : snapshot.child("Recipes").child(RecipeName).child("steps").getChildren()){
                     String step = stepSnapshot.getValue(String.class);
                     steps.add(step);
                 }
@@ -195,5 +196,11 @@ public class ViewRecipeActivity extends AppCompatActivity {
         Intent CookingIntent = new Intent(this, CookingRecipeActivity.class);
         CookingIntent.putStringArrayListExtra("StepsListKey",steps);
         startActivity(CookingIntent);
+    }
+
+    public void switchMainActivity(){
+        Intent MainIntent = new Intent(this, MainActivity.class);
+        startActivity(MainIntent);
+        finish();
     }
 }

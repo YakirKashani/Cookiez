@@ -1,11 +1,4 @@
 package com.example.cookiez.Model;
-
-enum Units{
-    MG,
-    G,
-    KG,
-    UNIT;
-}
 public class Ingredient {
 
     private String name;

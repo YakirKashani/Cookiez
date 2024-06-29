@@ -106,12 +106,12 @@ public class NotificationsFragment extends Fragment {
         DatabaseReference RecipesRef = SpecificUserRef.child("Recipes");
         RecipesRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) { //TODO - Improve read method
                 for (DataSnapshot recipeSnapshot : snapshot.getChildren()) {
                     String name = recipeSnapshot.getKey();
-                    String author = recipeSnapshot.child("Author").getValue(String.class);
-                    String dateUploaded = recipeSnapshot.child("Upload date").getValue(String.class);
-                    String timeUploaded = recipeSnapshot.child("Upload time").getValue(String.class);
+                    String author = recipeSnapshot.child("author").getValue(String.class);
+                    String dateUploaded = recipeSnapshot.child("date").getValue(String.class);
+                    String timeUploaded = recipeSnapshot.child("time").getValue(String.class);
                     String RecipePicture = recipeSnapshot.child("Recipe Picture").getValue(String.class);
                     Recipe recipe = new Recipe();
                     recipe.setAuthor(author).setName(name).setIngredients(null).setSteps(null).setDate(dateUploaded).setTime(timeUploaded).setRecipePicture(RecipePicture);
@@ -180,7 +180,7 @@ public class NotificationsFragment extends Fragment {
         SpecificUserRef.addValueEventListener(
                 new ValueEventListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    public void onDataChange(@NonNull DataSnapshot snapshot) { //TODO - Improve read method
                         String username = snapshot.child("userName").getValue(String.class);
                         account_MTV_UserName.setText(username);
                         account_MTV_RecipesCount.setText("" + snapshot.child("Recipes").getChildrenCount());

@@ -31,6 +31,17 @@
 
         </com.google.android.material.textview.MaterialTextView>
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/RecipeView_MTV_UploadTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Uploaded at"
+            android:textSize="15sp"
+            android:textStyle="italic"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@id/HRI_SIV_RecipePicture"
+            android:layout_marginTop="9dp">
+        </com.google.android.material.textview.MaterialTextView>
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/HRI_SIV_RecipePicture"
@@ -43,25 +54,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:src="@drawable/cooking_pot"
+            android:src="@drawable/cooking_pot"
             >
 
         </com.google.android.material.imageview.ShapeableImageView>
-
-        <!--com.google.android.material.textview.MaterialTextView
-            android:id="@+id/HRI_MTV_RecipeAuthor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="By: "
-            android:textSize="20sp"
-            android:textStyle="bold|italic"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/HRI_MTV_RecipeName"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="5dp"
-            >
-
-        </com.google.android.material.textview.MaterialTextView-->
     </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

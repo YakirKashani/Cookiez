@@ -100,19 +100,10 @@ public class NewRecipeActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        //TODO:
-
-     //   SpecificUserRef = db.getReference("users").child(UID); // Users -> specific user
-
         Intent previousScreen = getIntent();
-
         CurrentUserName = previousScreen.getStringExtra(UserNameStatus);
-
         findViews();
         initViews();
-
-
     }
 
     private void findViews() {
@@ -180,15 +171,17 @@ public class NewRecipeActivity extends AppCompatActivity {
             simpleTime = simpleTimeFormat.format(calendar.getTime()).toString();
             String name = NewRecipe_TIET_name.getText().toString();
 
-            recipe.setName(name).setIngredients(ingredientSetAdapter.getIngredientList()).setSteps(stepsSetAdapter.getStepsList()).setAuthor(CurrentUserName);
-            //TODO save into firebase
+            recipe.setName(name).setIngredients(ingredientSetAdapter.getIngredientList()).setSteps(stepsSetAdapter.getStepsList()).setAuthor(CurrentUserName).setDate(simpleDate).setTime(simpleTime);
+
+            db.getReference("users").child(user.getUid()).child("Recipes").child(recipe.getName()).setValue(recipe);
+/*
             db.getReference("users").child(user.getUid()).child("Recipes").child(recipe.getName()).child("Ingredients").setValue(recipe.getIngredients());
             db.getReference("users").child(user.getUid()).child("Recipes").child(recipe.getName()).child("Steps").setValue(recipe.getSteps());
             db.getReference("users").child(user.getUid()).child("Recipes").child(recipe.getName()).child("Author").setValue(recipe.getAuthor());
             db.getReference("users").child(user.getUid()).child("Recipes").child(recipe.getName()).child("Upload date").setValue(simpleDate);
             db.getReference("users").child(user.getUid()).child("Recipes").child(recipe.getName()).child("Upload time").setValue(simpleTime);
+    */
             uploadImage(recipe,image);
-            // TODO switch intent
             ChangeActivityMainActivity();
             SignalManager.getInstance().toast("Recipe Uploaded Successfully");
 
@@ -206,9 +199,7 @@ public class NewRecipeActivity extends AppCompatActivity {
                 intent.setType("image/*");
                 activityResultLauncher.launch(intent);
             }
-
         });
-
     }
 
     private final ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
@@ -217,8 +208,6 @@ public class NewRecipeActivity extends AppCompatActivity {
             if (result.getResultCode() == RESULT_OK) {
                 if (result.getData() != null) {
                     image = result.getData().getData();
-                    //Optional - make Material Button Register enabled after uploading a photo
-                    //Register_MB_Register.setEnabled(true);
                     Glide.with(getApplicationContext()).load(image).into(new CustomTarget<Drawable>() {
                         @Override
                         public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
