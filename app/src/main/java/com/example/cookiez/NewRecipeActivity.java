@@ -174,18 +174,9 @@ public class NewRecipeActivity extends AppCompatActivity {
             recipe.setName(name).setIngredients(ingredientSetAdapter.getIngredientList()).setSteps(stepsSetAdapter.getStepsList()).setAuthor(CurrentUserName).setDate(simpleDate).setTime(simpleTime);
 
             db.getReference("users").child(user.getUid()).child("Recipes").child(recipe.getName()).setValue(recipe);
-/*
-            db.getReference("users").child(user.getUid()).child("Recipes").child(recipe.getName()).child("Ingredients").setValue(recipe.getIngredients());
-            db.getReference("users").child(user.getUid()).child("Recipes").child(recipe.getName()).child("Steps").setValue(recipe.getSteps());
-            db.getReference("users").child(user.getUid()).child("Recipes").child(recipe.getName()).child("Author").setValue(recipe.getAuthor());
-            db.getReference("users").child(user.getUid()).child("Recipes").child(recipe.getName()).child("Upload date").setValue(simpleDate);
-            db.getReference("users").child(user.getUid()).child("Recipes").child(recipe.getName()).child("Upload time").setValue(simpleTime);
-    */
             uploadImage(recipe,image);
             ChangeActivityMainActivity();
             SignalManager.getInstance().toast("Recipe Uploaded Successfully");
-
-
         });
 
         NewRecipe_MB_cancel.setOnClickListener(v -> {
@@ -221,7 +212,6 @@ public class NewRecipeActivity extends AppCompatActivity {
                     });
                 }
             } else {
-                //toast message upload failed
             }
         }
     });
@@ -252,8 +242,6 @@ public class NewRecipeActivity extends AppCompatActivity {
     private void useUri(Recipe recipe,Uri uri) {
         Log.d("useUri",uri.toString());
         db.getReference("users").child(user.getUid()).child("Recipes").child(recipe.getName()).child("Recipe Picture").setValue(uri.toString());
-
-        //     SpecificUserRef.child("Profile Picture").setValue(uri.toString());
     }
 
     private void ChangeActivityMainActivity() {

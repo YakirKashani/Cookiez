@@ -54,12 +54,9 @@ public class CompletedUserRegisterActivity extends AppCompatActivity {
             if (result.getResultCode() == RESULT_OK) {
                 if (result.getData() != null) {
                     image = result.getData().getData();
-                    //Optional - make Matterial Button Register enabled after uploading a photo
-                    //Register_MB_Register.setEnabled(true);
                     Glide.with(getApplicationContext()).load(image).into(Register_SIV_ProfileImage);
                 }
             } else {
-                //toast message upload failed
             }
         }
     });
@@ -81,8 +78,6 @@ public class CompletedUserRegisterActivity extends AppCompatActivity {
         db = FirebaseDatabase.getInstance();
         UsersRef = db.getReference("users");
         SpecificUserRef = UsersRef.child(UID); // Users -> specific user
-
-
         findViews();
         initViews(UID);
     }

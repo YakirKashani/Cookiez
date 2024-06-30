@@ -53,8 +53,6 @@ public class ViewRecipeFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) { //TODO - change method
                 Recipe recipe = new Recipe();
-                //           ArrayList<Ingredient> ingredients = new ArrayList<>();
-                //          ArrayList<String> steps = new ArrayList<>();
                 for(DataSnapshot ingredientSnapshot : snapshot.child("ingredients").getChildren()) {
                     String name = ingredientSnapshot.child("name").getValue(String.class);
                     String amount = ingredientSnapshot.child("amount").getValue(String.class);

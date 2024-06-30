@@ -145,9 +145,6 @@ public class ViewRecipeActivity extends AppCompatActivity {
                 String date = snapshot.child("Recipes").child(RecipeName).child("date").getValue(String.class);
                 String time = snapshot.child("Recipes").child(RecipeName).child("time").getValue(String.class);
                 String RecipePicture = snapshot.child("Recipes").child(RecipeName).child("Recipe Picture").getValue(String.class);
-
-     //           ArrayList<Ingredient> ingredients = new ArrayList<>();
-      //          ArrayList<String> steps = new ArrayList<>();
                 for(DataSnapshot ingredientSnapshot : snapshot.child("Recipes").child(RecipeName).child("ingredients").getChildren()) {
                     String name = ingredientSnapshot.child("name").getValue(String.class);
                     String amount = ingredientSnapshot.child("amount").getValue(String.class);

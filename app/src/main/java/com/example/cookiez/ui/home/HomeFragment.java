@@ -79,18 +79,18 @@ public class HomeFragment extends Fragment {
         Home_RV_Posts = view.findViewById(R.id.Home_RV_Posts);
     }
     private void initViews(View view) { //TODO - Improve reading methods
-        DatabaseReference CurrentUserRef = UsersRef.child(user.getUid()).child("Following"); // Users -> specific user
+        DatabaseReference CurrentUserRef = UsersRef.child(user.getUid()).child("Following");
         CurrentUserRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot Following : snapshot.getChildren()) {
                     String uid = Following.getKey();
-                    DatabaseReference FollowingUserRef = UsersRef.child(uid).child("Recipes"); // Users -> specific user
-                    String AuthorPicture =  Following.child("Profile Picture").getValue(String.class);
+                    DatabaseReference FollowingUserRef = UsersRef.child(uid);
                     FollowingUserRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for (DataSnapshot recipeSanpshot : snapshot.getChildren()) {
+                            String AuthorPicture = snapshot.child("Profile Picture").getValue(String.class); //BUG
+                            for (DataSnapshot recipeSanpshot : snapshot.child("Recipes").getChildren()) {
                                 String name = recipeSanpshot.getKey();
                                 String author = recipeSanpshot.child("author").getValue(String.class);
                                 String dateUploaded = recipeSanpshot.child("date").getValue(String.class);
@@ -98,10 +98,10 @@ public class HomeFragment extends Fragment {
                                 String RecipePicture = recipeSanpshot.child("Recipe Picture").getValue(String.class);
                                 long likes = recipeSanpshot.child("Likes").getChildrenCount();
                                 ArrayList<String> UsersLiked = new ArrayList<>();
-                                for(DataSnapshot likesSnapshot : recipeSanpshot.child("Likes").getChildren())
+                                for (DataSnapshot likesSnapshot : recipeSanpshot.child("Likes").getChildren())
                                     UsersLiked.add(likesSnapshot.getKey());
                                 Recipe recipe = new Recipe();
-                                recipe.setName(name).setAuthorUid(uid).setAuthor(author).setDate(dateUploaded).setTime(timeUploaded).setLikes(likes).setIngredients(null).setSteps(null).setRecipePicture(AuthorPicture).setRecipePicture(RecipePicture).setUsersLiked(UsersLiked);
+                                recipe.setName(name).setAuthorUid(uid).setAuthor(author).setDate(dateUploaded).setTime(timeUploaded).setLikes(likes).setIngredients(null).setSteps(null).setAuthorPicture(AuthorPicture).setRecipePicture(RecipePicture).setUsersLiked(UsersLiked);
                                 posts.add(recipe);
                             }
                             usePosts(view, posts);
@@ -112,8 +112,6 @@ public class HomeFragment extends Fragment {
 
                         }
                     });
-
-
                 }
             }
 
@@ -122,9 +120,6 @@ public class HomeFragment extends Fragment {
 
             }
         });
-
-
-
 
         postAdapter.setRecipeCallback(new RecipeCallback() {
             @Override
@@ -141,18 +136,31 @@ public class HomeFragment extends Fragment {
         postAdapter.setPostCallback(new PostCallback() {
             @Override
             public void likeButtonClicked(Recipe recipe, int position) {
-                if(recipe.getUsersLiked().contains(user.getUid()))
-                {
-         //           recipe.getUsersLiked().remove(user.getUid());
-                    UsersRef.child(recipe.getAuthorUid()).child("Recipes").child(recipe.getName()).child("Likes").child(user.getUid()).removeValue();
-                }
-                else{
-           //         recipe.getUsersLiked().add(user.getUid());
-                    UsersRef.child(recipe.getAuthorUid()).child("Recipes").child(recipe.getName()).child("Likes").child(user.getUid()).setValue(user.getUid());
-                }
-                posts.clear();
+                updateLikes(recipe,position);
             }
         });
+    }
+
+    public void updateLikes(Recipe recipe,int position)
+    {
+        DatabaseReference recipeRef = UsersRef.child(recipe.getAuthorUid()).child("Recipes").child(recipe.getName()).child("Likes").child(user.getUid());
+        if (recipe.getUsersLiked().contains(user.getUid())) {
+            recipeRef.removeValue().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    recipe.getUsersLiked().remove(user.getUid());
+                    recipe.setLikes(recipe.getLikes() - 1);
+                    postAdapter.notifyItemChanged(position);
+                }
+            });
+        } else {
+            recipeRef.setValue(user.getUid()).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    recipe.getUsersLiked().add(user.getUid());
+                    recipe.setLikes(recipe.getLikes() + 1);
+                    postAdapter.notifyItemChanged(position);
+                }
+            });
+        }
     }
 
     private void usePosts(View view, ArrayList<Recipe> posts) {

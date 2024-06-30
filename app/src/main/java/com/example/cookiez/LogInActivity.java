@@ -67,11 +67,6 @@ public class LogInActivity extends AppCompatActivity {
                         }
                     }
             );
-     /*       if (CurrentUser.getUserName() == null)
-                ChangeActivityCompletedRegister(CurrentUser.getUid()); // User don't have userName -> go to complete register
-            else {
-                ChangeActivityMainActivity();
-            }*/
         }
     }
 

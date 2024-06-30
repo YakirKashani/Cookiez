@@ -83,21 +83,6 @@ public class NotificationsFragment extends Fragment {
         findViews(view);
         initViews(view);
         DatabaseReference SpecificUserRef = UsersRef.child(user.getUid()); // Users -> specific user
-//        SpecificUserRef.child("userName").addValueEventListener(
-//                new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        String username = snapshot.getValue(String.class);
-//                        account_MTV_UserName.setText(username);
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                }
-//        );
-
     }
 
     private void initViews(View view) {
@@ -116,28 +101,6 @@ public class NotificationsFragment extends Fragment {
                     Recipe recipe = new Recipe();
                     recipe.setAuthor(author).setName(name).setIngredients(null).setSteps(null).setDate(dateUploaded).setTime(timeUploaded).setRecipePicture(RecipePicture);
                     recipes.add(recipe);
-
-                  /*  ArrayList<Ingredient> ingredients = new ArrayList<>();
-                    for(DataSnapshot ingredientSnapshot : recipeSnapshot.child("ingredients").getChildren()){
-                        String name = ingredientSnapshot.child("name").getValue(String.class);
-                        String amount = ingredientSnapshot.child("amount").getValue(String.class);
-                        String units = ingredientSnapshot.child("units").getValue(String.class);
-                        Ingredient ingredient = new Ingredient();
-                        ingredient.setName(name).setAmount(amount).setUnit(units);
-                        ingredients.add(ingredient);
-                    }
-
-                    ArrayList<String> steps = new ArrayList<>();
-                    for(DataSnapshot stepSnapshot : recipeSnapshot.child("steps").getChildren()){
-                        String step = stepSnapshot.getValue(String.class);
-                        steps.add(step);
-                    }
-
-                    Recipe recipe = new Recipe();
-                    recipe.setAuthor(author).setIngredients(ingredients).setName(name).setSteps(steps);
-
-                   */
-
                 }
                 recipes.sort(new Recipe.RecipeDateComparator());
                 useRecipes(view, recipes);
@@ -162,18 +125,6 @@ public class NotificationsFragment extends Fragment {
                 RecipeIntent.putExtra(ViewRecipeActivity.RecipeAuthorStatus, recipe.getAuthor());
                 RecipeIntent.putExtra(ViewRecipeActivity.UUIDstatus, user.getUid());
                 startActivity(RecipeIntent);
-
-     /*           FragmentManager fragmentManager = getParentFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                Bundle bundle = new Bundle();
-                bundle.putString("RecipeName",recipe.getName());
-                bundle.putString("Author",recipe.getAuthor());
-                bundle.putString("UUID",user.getUid());
-                ViewRecipeFragment fragment = new ViewRecipeFragment();
-                fragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.nav_host_fragment_activity_main,fragment);
-            //    fragmentTransaction.addToBackStack(null);
-               fragmentTransaction.commit();*/
             }
         });
 
