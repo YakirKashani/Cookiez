@@ -134,7 +134,7 @@ public class CookingRecipeActivity extends AppCompatActivity {
         CookingRecipe_MTV_Timer.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
     }
 
-    private void startTimer(int seconds) { //TODO - Fix method
+    private void startTimer(int seconds) {
         if (!timerOn) {
             timerOn = true;
             long currentTime = System.currentTimeMillis();

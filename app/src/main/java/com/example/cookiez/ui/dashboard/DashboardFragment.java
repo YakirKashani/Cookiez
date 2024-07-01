@@ -108,7 +108,7 @@ public class DashboardFragment extends Fragment {
                             if (search.length() == 0) {
                                 userRecipesCountsList.clear();
                             }
-                            else { //TODO - Improve reading method
+                            else {
                                 for (DataSnapshot userSnapshot : snapshot.getChildren()) {
                                     String name = userSnapshot.child("userName").getValue(String.class);
                                     String ProfilePicture = userSnapshot.child("Profile Picture").getValue(String.class);

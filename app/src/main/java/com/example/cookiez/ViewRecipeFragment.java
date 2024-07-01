@@ -51,7 +51,7 @@ public class ViewRecipeFragment extends Fragment {
         UsersRef = db.getReference("users");
         UsersRef.child(UUID).child("Recipes").child(RecipeName).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) { //TODO - change method
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Recipe recipe = new Recipe();
                 for(DataSnapshot ingredientSnapshot : snapshot.child("ingredients").getChildren()) {
                     String name = ingredientSnapshot.child("name").getValue(String.class);

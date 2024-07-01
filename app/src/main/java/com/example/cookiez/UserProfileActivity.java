@@ -126,7 +126,7 @@ public class UserProfileActivity extends AppCompatActivity {
               //  finish();
             }
         });
-        UsersRef.child(userID).addValueEventListener(new ValueEventListener() { // TODO - Change upload method
+        UsersRef.child(userID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserProfile_MTV_UserName.setText(snapshot.child("userName").getValue(String.class));

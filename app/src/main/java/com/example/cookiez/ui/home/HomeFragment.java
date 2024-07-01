@@ -78,7 +78,7 @@ public class HomeFragment extends Fragment {
     private void findViews(View view) {
         Home_RV_Posts = view.findViewById(R.id.Home_RV_Posts);
     }
-    private void initViews(View view) { //TODO - Improve reading methods
+    private void initViews(View view) {
         DatabaseReference CurrentUserRef = UsersRef.child(user.getUid()).child("Following");
         CurrentUserRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

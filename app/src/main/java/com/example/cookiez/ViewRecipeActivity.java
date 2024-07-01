@@ -140,7 +140,7 @@ public class ViewRecipeActivity extends AppCompatActivity {
 
         UsersRef.child(UUID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) { // TODO - change method
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Recipe recipe = new Recipe();
                 String date = snapshot.child("Recipes").child(RecipeName).child("date").getValue(String.class);
                 String time = snapshot.child("Recipes").child(RecipeName).child("time").getValue(String.class);

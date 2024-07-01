@@ -91,7 +91,7 @@ public class NotificationsFragment extends Fragment {
         DatabaseReference RecipesRef = SpecificUserRef.child("Recipes");
         RecipesRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) { //TODO - Improve read method
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot recipeSnapshot : snapshot.getChildren()) {
                     String name = recipeSnapshot.getKey();
                     String author = recipeSnapshot.child("author").getValue(String.class);
@@ -131,7 +131,7 @@ public class NotificationsFragment extends Fragment {
         SpecificUserRef.addValueEventListener(
                 new ValueEventListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) { //TODO - Improve read method
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
                         String username = snapshot.child("userName").getValue(String.class);
                         account_MTV_UserName.setText(username);
                         account_MTV_RecipesCount.setText("" + snapshot.child("Recipes").getChildrenCount());
