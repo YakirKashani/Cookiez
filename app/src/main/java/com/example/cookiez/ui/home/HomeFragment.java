@@ -80,13 +80,13 @@ public class HomeFragment extends Fragment {
     }
     private void initViews(View view) { //TODO - Improve reading methods
         DatabaseReference CurrentUserRef = UsersRef.child(user.getUid()).child("Following");
-        CurrentUserRef.addValueEventListener(new ValueEventListener() {
+        CurrentUserRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot Following : snapshot.getChildren()) {
                     String uid = Following.getKey();
                     DatabaseReference FollowingUserRef = UsersRef.child(uid);
-                    FollowingUserRef.addValueEventListener(new ValueEventListener() {
+                    FollowingUserRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             String AuthorPicture = snapshot.child("Profile Picture").getValue(String.class); //BUG
